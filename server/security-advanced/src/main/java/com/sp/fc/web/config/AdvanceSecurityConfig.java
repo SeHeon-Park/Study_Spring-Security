@@ -29,7 +29,7 @@ public class AdvanceSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         // 로그인 필터는 authenticationManager에게 인증 위임
-        JWTLoginFilter loginFilter = new JWTLoginFilter(authenticationManager());  // 로그인 필터
+        JWTLoginFilter loginFilter = new JWTLoginFilter(authenticationManager(), userService);  // 로그인 필터
 
         // 체크 필터는 사용자를 직접 가져와야 될 수도 있음
         JWTCheckFilter checkFilter = new JWTCheckFilter(authenticationManager(), userService);  // request 마다 검증 필터
